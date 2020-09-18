@@ -1,0 +1,29 @@
+Installing or updating the samba server:
+sudo apt-get update
+sudo apt-get install samba
+
+
+Create a directory for sharing :
+mkdir /home/kali/sambashare/
+
+
+Command line text editor:
+sudo nano /etc/samba/smb.conf
+
+Add this to the end of the file:
+    comment = Hello world
+    path = /home/username/sambashare
+    read only = no
+    browsable = yes
+
+add smbclient :
+sudo apt-get -y install smbclient
+
+Start/Restart the service:
+sudo service smbd restart
+
+Allow samba through the firewall:
+sudo ufw allow samba
+
+Setting up User Account
+sudo smbpasswd -a username
